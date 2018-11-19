@@ -1,8 +1,35 @@
 import * as Expo from "expo";
 import React, { Component } from "react";
 import { StyleProvider } from "native-base";
+import { StackNavigator, DrawerNavigator } from "react-navigation";
 
 import App from "../App";
+import Login from "../screens/login/"
+import Home from "../screens/home/"
+import SideBar from "../screens/sidebar";
+
+const Drawer = DrawerNavigator({
+    Home: { screen: Home }
+  },
+  {
+    initialRouteName: "Home",
+    contentOptions: {
+      activeTintColor: "#e91e63"
+    },
+    contentComponent: props => <SideBar {...props} />
+  }
+);
+
+const AppNavigator = StackNavigator({
+    Login: { screen: Login },
+    Home: { screen: Home },
+    Drawer: { screen: Drawer }
+  },
+  {
+    initialRouteName: "Login",
+    headerMode: "none"
+  }
+);
 
 export default class Setup extends Component {
   constructor() {
@@ -27,7 +54,7 @@ export default class Setup extends Component {
       return <Expo.AppLoading />;
     }
     return (
-      <App />
+      <AppNavigator />
     );
   }
 }
