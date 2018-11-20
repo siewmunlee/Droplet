@@ -11,6 +11,8 @@ import Inbox from "../screens/inbox/"
 import About from "../screens/about/"
 import Profile from "../screens/profile/"
 
+import Chat from "../screens/inbox/chat"
+
 import SideBar from "../screens/sidebar";
 
 // Drawer navigation here
@@ -32,6 +34,8 @@ const Drawer = createDrawerNavigator({
 // Main navigation which includes drawers and other stuffs
 const MainNavigator = createStackNavigator({
     Drawer: { screen: Drawer },
+
+    Chat: {screen: Chat}
   },
   {
     initialRouteName: "Drawer",
