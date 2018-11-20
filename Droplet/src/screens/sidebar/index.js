@@ -3,7 +3,8 @@ import { Image, StyleSheet } from "react-native";
 import { Content, Text, List, ListItem, Icon, Container, Left, Right, Badge} from "native-base";
 import styles from "./style";
 
-
+// Navigation items
+// Remember to change the icons
 const datas = [
   {
     name: "Home",
@@ -12,28 +13,26 @@ const datas = [
     bg: "#C5F442"
   },
   {
-    name: "Proffile",
+    name: "Profile",
     route: "Profile",
     icon: "easel",
     bg: "#C5F442"
   },
   {
-    name: "Inbox",
+    name: "Chat Inbox",
     route: "Inbox",
     icon: "phone-portrait",
-    bg: "#477EEA",
-    types: "10"
+    bg: "#477EEA"
   },
   {
     name: "About",
     route: "About",
     icon: "phone-portrait",
-    bg: "#DA4437",
-    types: "4"
+    bg: "#DA4437"
   },
   {
     name: "Logout",
-    route: "Logout",
+    route: "Login",
     icon: "notifications",
     bg: "#4DCAE0"
   }
@@ -55,8 +54,8 @@ class SideBar extends Component {
           bounces={false}
           style={{ flex: 1, backgroundColor: "#fff", top: -1 }}
         >
-          <Image source={drawerCover} style={styles.drawerCover} />
-          <Image square style={styles.drawerImage} source={drawerImage} />
+          <Image  style={styles.drawerCover} />
+          <Image square style={styles.drawerImage}  />
 
           <List
             dataArray={datas}
@@ -66,6 +65,7 @@ class SideBar extends Component {
                 noBorder
                 onPress={() => this.props.navigation.navigate(data.route)}
               >
+
                 <Left>
                   <Icon
                     active

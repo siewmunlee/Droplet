@@ -4,7 +4,7 @@ import {
     Body, Left, Right, Icon, Form, Text, Spinner
 } from "native-base";
 import { StyleSheet, Image } from "react-native"
-import { NavigationAction } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 
 
 export default class Login extends Component {
@@ -40,6 +40,7 @@ export default class Login extends Component {
         );
     }
 }
+
 
 const styles = StyleSheet.create({
     input: {

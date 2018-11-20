@@ -1,15 +1,24 @@
 import * as Expo from "expo";
 import React, { Component } from "react";
 import { StyleProvider } from "native-base";
-import { StackNavigator, DrawerNavigator } from "react-navigation";
+import { createStackNavigator, createDrawerNavigator, createAppContainer, createSwitchNavigator } from "react-navigation";
 
 import App from "../App";
+
 import Login from "../screens/login/"
 import Home from "../screens/home/"
+import Inbox from "../screens/inbox/"
+import About from "../screens/about/"
+import Profile from "../screens/profile/"
+
 import SideBar from "../screens/sidebar";
 
-const Drawer = DrawerNavigator({
-    Home: { screen: Home }
+// Drawer navigation here
+const Drawer = createDrawerNavigator({
+    Home: { screen: Home },
+    Inbox: {screen: Inbox},
+    About: {screen: About},
+    Profile: {screen: Profile}
   },
   {
     initialRouteName: "Home",
@@ -20,16 +29,23 @@ const Drawer = DrawerNavigator({
   }
 );
 
-const AppNavigator = StackNavigator({
-    Login: { screen: Login },
-    Home: { screen: Home },
-    Drawer: { screen: Drawer }
+// Main navigation which includes drawers and other stuffs
+const MainNavigator = createStackNavigator({
+    Drawer: { screen: Drawer },
   },
   {
-    initialRouteName: "Login",
+    initialRouteName: "Drawer",
     headerMode: "none"
   }
 );
+
+// Login navigation 
+const AuthNavigator = createSwitchNavigator({
+  Login: { screen: Login },
+  Home: MainNavigator
+});
+
+const AppNavigator = createAppContainer(AuthNavigator);
 
 export default class Setup extends Component {
   constructor() {
