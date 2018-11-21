@@ -22,31 +22,24 @@ class Chat extends Component {
 
   render() {
     return (
-      // <Container>
-      //   <Header>
-      //     <Left>
-      //       <Button transparent onPress={() => this.props.navigation.goBack()}>
-      //         <Icon name="arrow-back" />
-      //       </Button>
-      //     </Left>
-      //     <Body>
-      //       <Title><H3>Chat</H3></Title>
-      //     </Body>
-      //     <Right />
-      //   </Header>
-      //   <Content>
-      //     <GiftedChat
-      //       messages={this.state.messages}
-      //       onSend={Fire.shared.send}
-      //       user={this.user}
-      //     />
-      //   </Content>
-      // </Container>
-      <GiftedChat
-      messages={this.state.messages}
-      onSend={Fire.shared.send}
-      user={this.user}
-    />
+      <Container>
+        <Header>
+          <Left>
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
+              <Icon name="arrow-back" />
+            </Button>
+          </Left>
+          <Body>
+            <Title><H3>Chat</H3></Title>
+          </Body>
+          <Right />
+        </Header>
+        <GiftedChat
+          messages={this.state.messages}
+          onSend={Fire.shared.send}
+          user={this.user}
+        />
+      </Container>
     );
   }
 
