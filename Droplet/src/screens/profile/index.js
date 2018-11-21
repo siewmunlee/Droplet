@@ -3,7 +3,7 @@ import { ImageBackground, View, StatusBar } from "react-native";
 import { Container, Button, H3, Text, Title, Header, Icon, Left, Body, Right } from "native-base";
 import { DrawerActions } from 'react-navigation-drawer';
 
-export default class Home extends Component {
+export default class Profile extends Component {
     render() {
         return (
             <Container>
@@ -17,7 +17,7 @@ export default class Home extends Component {
                         </Button>
                     </Left>
                     <Body>
-                        <Title>Home</Title>
+                        <Title>Profile</Title>
                     </Body>
                     <Right />
                 </Header>
