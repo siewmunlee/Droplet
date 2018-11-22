@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { ImageBackground, View, StatusBar } from "react-native";
-import { Container, Button, H3, Text, Title, Header, Icon, Left, Body, Right } from "native-base";
+import { Container, Button, H3, Text, Title, Header, Icon, Left, Body, Right, Content } from "native-base";
 import { DrawerActions } from 'react-navigation-drawer';
 
-export default class About extends Component {
+export default class Diary extends Component {
     render() {
         return (
             <Container>
@@ -17,10 +17,13 @@ export default class About extends Component {
                         </Button>
                     </Left>
                     <Body>
-                        <Title>About</Title>
+                        <Title>Diary</Title>
                     </Body>
                     <Right />
                 </Header>
+                <Content>
+                    
+                </Content>
             </Container>
         );
     }
