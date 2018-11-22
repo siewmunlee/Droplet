@@ -22,9 +22,11 @@ export default class Diary extends Component {
                     <Right />
                 </Header>
                 <Content>
-                    
+
                 </Content>
             </Container>
         );
     }
+
+
 }

@@ -1,4 +1,5 @@
 import * as Expo from "expo";
+import { AppLoading, Permissions } from 'expo';
 import React, { Component } from "react";
 import { StyleProvider } from "native-base";
 import { createStackNavigator, createDrawerNavigator, createAppContainer, createSwitchNavigator } from "react-navigation";
@@ -15,8 +16,9 @@ import Chat from "../screens/inbox/chat"
 
 import SideBar from "../screens/sidebar";
 
+
+ // Remote notifications do not work in simulators, only on device
 async function getToken() {
-  // Remote notifications do not work in simulators, only on device
   if (!Expo.Constants.isDevice) {
     return;
   }
@@ -31,15 +33,13 @@ async function getToken() {
   /// Send this to a server
 }
 
-
-
 // Drawer navigation here
 const Drawer = createDrawerNavigator({
-    Home: { screen: Home },
-    Inbox: {screen: Inbox},
-    Diary: {screen: Diary},
-    Profile: {screen: Profile}
-  },
+  Home: { screen: Home },
+  Inbox: { screen: Inbox },
+  Diary: { screen: Diary },
+  Profile: { screen: Profile }
+},
   {
     initialRouteName: "Home",
     contentOptions: {
@@ -51,10 +51,10 @@ const Drawer = createDrawerNavigator({
 
 // Main navigation which includes drawers and other stuffs
 const MainNavigator = createStackNavigator({
-    Drawer: { screen: Drawer },
+  Drawer: { screen: Drawer },
 
-    Chat: {screen: Chat}
-  },
+  Chat: { screen: Chat }
+},
   {
     initialRouteName: "Drawer",
     headerMode: "none"
@@ -76,30 +76,34 @@ export default class Setup extends Component {
       isReady: false
     };
   }
-    componentDidMount() {
+
+  componentDidMount() {
     getToken();
 
     this.listener = Expo.Notifications.addListener(this.handleNotification);
   }
+
   componentWillMount() {
     this.loadFonts();
-	this.listener && this.listener.remove();
+    this.listener && this.listener.remove();
   }
-    handleNotification = ({ origin, data }) => {
+
+  handleNotification = ({ origin, data }) => {
     console.log(
       `Push notification ${origin} with data: ${JSON.stringify(data)}`,
     );
   };
+
   async loadFonts() {
     await Expo.Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
       Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
     });
+    await Permissions.askAsync(Permissions.AUDIO_RECORDING);
     this.setState({ isReady: true });
   }
-  
-  
+
   render() {
     if (!this.state.isReady) {
       return <Expo.AppLoading />;
