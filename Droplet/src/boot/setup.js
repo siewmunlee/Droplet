@@ -15,6 +15,24 @@ import Chat from "../screens/inbox/chat"
 
 import SideBar from "../screens/sidebar";
 
+async function getToken() {
+  // Remote notifications do not work in simulators, only on device
+  if (!Expo.Constants.isDevice) {
+    return;
+  }
+  let { status } = await Expo.Permissions.askAsync(
+    Expo.Permissions.NOTIFICATIONS,
+  );
+  if (status !== 'granted') {
+    return;
+  }
+  let value = await Expo.Notifications.getExpoPushTokenAsync();
+  console.log('Our token', value);
+  /// Send this to a server
+}
+
+
+
 // Drawer navigation here
 const Drawer = createDrawerNavigator({
     Home: { screen: Home },
@@ -58,9 +76,20 @@ export default class Setup extends Component {
       isReady: false
     };
   }
+    componentDidMount() {
+    getToken();
+
+    this.listener = Expo.Notifications.addListener(this.handleNotification);
+  }
   componentWillMount() {
     this.loadFonts();
+	this.listener && this.listener.remove();
   }
+    handleNotification = ({ origin, data }) => {
+    console.log(
+      `Push notification ${origin} with data: ${JSON.stringify(data)}`,
+    );
+  };
   async loadFonts() {
     await Expo.Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
@@ -69,6 +98,8 @@ export default class Setup extends Component {
     });
     this.setState({ isReady: true });
   }
+  
+  
   render() {
     if (!this.state.isReady) {
       return <Expo.AppLoading />;
