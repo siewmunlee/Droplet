@@ -4,6 +4,12 @@ import { Container, Button, H3, Text, Title, Header, Icon, Left, Body, Right, Co
 import { DrawerActions } from 'react-navigation-drawer';
 
 export default class Diary extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            noteArray: []
+        };
+    }
     render() {
         return (
             <Container>
@@ -19,7 +25,11 @@ export default class Diary extends Component {
                     <Body>
                         <Title>Diary</Title>
                     </Body>
-                    <Right />
+                    <Right>
+                        <Button transparent onPress={() => this.props.navigation.navigate("Audio")}>
+                            <Icon name="menu" />
+                        </Button>
+                    </Right>
                 </Header>
                 <Content>
 
@@ -27,6 +37,4 @@ export default class Diary extends Component {
             </Container>
         );
     }
-
-
 }

@@ -13,11 +13,12 @@ import Diary from "../screens/diary/"
 import Profile from "../screens/profile/"
 
 import Chat from "../screens/inbox/chat"
+import Audio from "../screens/diary/addAudio"
 
 import SideBar from "../screens/sidebar";
 
 
- // Remote notifications do not work in simulators, only on device
+// Remote notifications do not work in simulators, only on device
 async function getToken() {
   if (!Expo.Constants.isDevice) {
     return;
@@ -52,7 +53,7 @@ const Drawer = createDrawerNavigator({
 // Main navigation which includes drawers and other stuffs
 const MainNavigator = createStackNavigator({
   Drawer: { screen: Drawer },
-
+  Audio: { screen: Audio },
   Chat: { screen: Chat }
 },
   {
