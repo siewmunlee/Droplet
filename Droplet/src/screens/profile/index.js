@@ -39,7 +39,7 @@ export default class Profile extends Component {
 
 
            			  <View style={styles.bodyContent}>
-           			   <PureChart data={sampleData} type='bar' />
+           			   <PureChart data={sampleData} type='line' />
            			   </View>
 
 
@@ -51,7 +51,7 @@ export default class Profile extends Component {
 }
 let sampleData = [
   {
-    seriesName: 'series1',
+    seriesName: 'Anxiety',
     data: [
       {x: '2018-02-01', y: 30},
       {x: '2018-02-02', y: 200},

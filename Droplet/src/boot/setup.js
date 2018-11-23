@@ -10,7 +10,7 @@ import Home from "../screens/home/"
 import Inbox from "../screens/inbox/"
 import About from "../screens/about/"
 import Profile from "../screens/profile/"
-
+import Slider1 from "../screens/home/Slider1"
 import Chat from "../screens/inbox/chat"
 
 import SideBar from "../screens/sidebar";
@@ -52,7 +52,7 @@ const Drawer = createDrawerNavigator({
 // Main navigation which includes drawers and other stuffs
 const MainNavigator = createStackNavigator({
     Drawer: { screen: Drawer },
-
+    Slider1: {screen: Slider1},
     Chat: {screen: Chat}
   },
   {
@@ -61,7 +61,7 @@ const MainNavigator = createStackNavigator({
   }
 );
 
-// Login navigation 
+// Login navigation
 const AuthNavigator = createSwitchNavigator({
   Login: { screen: Login },
   Home: MainNavigator
@@ -98,8 +98,8 @@ export default class Setup extends Component {
     });
     this.setState({ isReady: true });
   }
-  
-  
+
+
   render() {
     if (!this.state.isReady) {
       return <Expo.AppLoading />;
