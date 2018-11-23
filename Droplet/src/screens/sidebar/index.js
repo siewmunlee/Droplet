@@ -25,8 +25,8 @@ const datas = [
     bg: "#477EEA"
   },
   {
-    name: "About",
-    route: "About",
+    name: "Diary",
+    route: "Diary",
     icon: "phone-portrait",
     bg: "#DA4437"
   },

@@ -8,7 +8,7 @@ import App from "../App";
 import Login from "../screens/login/"
 import Home from "../screens/home/"
 import Inbox from "../screens/inbox/"
-import About from "../screens/about/"
+import Diary from "../screens/diary/"
 import Profile from "../screens/profile/"
 import Slider1 from "../screens/home/Slider1"
 import Chat from "../screens/inbox/chat"
@@ -37,7 +37,7 @@ async function getToken() {
 const Drawer = createDrawerNavigator({
     Home: { screen: Home },
     Inbox: {screen: Inbox},
-    About: {screen: About},
+    Diary: {screen: Diary},
     Profile: {screen: Profile}
   },
   {
