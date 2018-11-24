@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import { ImageBackground, View, StatusBar, ListView, Alert } from "react-native";
+import { ImageBackground, View, StatusBar, ListView, Alert, StyleSheet } from "react-native";
 import { Container, Button, Text, Title, Header, Icon, Left, Body, Right, Fab, IconNB, Card, CardItem } from "native-base";
 import { DrawerActions } from 'react-navigation-drawer';
 import { connect } from 'react-redux'
+import Ionicons from "react-native-vector-icons/Ionicons";
+
 import { deleteNote } from '../../actions'
 
 class Diary extends Component {
@@ -15,26 +17,26 @@ class Diary extends Component {
 
     pressNote(noteId) {
         Alert.alert(
-          'Delete Journal',
-          'Do you want to delete this journal?',
-          [
-            { text: 'YES', onPress: () => this.deleteNote(noteId) },
-            { text: 'No' }
-          ]
+            'Delete Journal',
+            'Do you want to delete this journal?',
+            [
+                { text: 'YES', onPress: () => this.deleteNote(noteId) },
+                { text: 'No' }
+            ]
         )
-      }
-    
-      deleteNote(noteId) {
-        this.props.deleteNote(noteId)
-      }
+    }
 
-      goToNote(Id, Title, Description) {
+    deleteNote(noteId) {
+        this.props.deleteNote(noteId)
+    }
+
+    goToNote(Id, Title, Description) {
         this.props.navigation.navigate("EditNote", {
             noteId: Id,
             title: Title,
             description: Description
         });
-      }
+    }
 
     render() {
         return (
@@ -64,15 +66,18 @@ class Diary extends Component {
                         position="bottomRight"
                         onPress={() => this.setState({ active: !this.state.active })}
                     >
-                        <IconNB name="md-share" />
+                        <IconNB name="md-add" />
                         <Button
                             style={{ backgroundColor: "#34A34F" }}
                             onPress={() => this.props.navigation.navigate("NewNote")}
                         >
-                            <IconNB name="logo-whatsapp" />
+                            <IconNB name="attach" />
                         </Button>
-                        <Button disabled style={{ backgroundColor: "#DD5144" }}>
-                            <IconNB name="ios-mail" />
+                        <Button 
+                            style={{ backgroundColor: "#DD5144" }}
+                            onPress={() => this.props.navigation.navigate("AudioNote")}
+                        >
+                            <IconNB name="microphone" />
                         </Button>
                     </Fab>
                 </View>
@@ -85,8 +90,8 @@ class Diary extends Component {
     renderList() {
         if (this.props.notes.length <= 0) {
             return (
-                <View>
-                    <Text>Add some notes...</Text>
+                <View style={styles.emptyListContainer}>
+                    <Text style={styles.emptyList}>You do not have any journal entries in your diary</Text>
                 </View>
             )
         } else {
@@ -98,24 +103,29 @@ class Diary extends Component {
                     dataSource={dataSource}
                     renderRow={(note, sectionID, rowID) => {
                         return (
-                            //   <NotesViewCard
-                            //     title={note.title}
-                            //     description={note.description}
-                            //     id={note.id}
-                            //     keys={rowID}
-                            //     onPressBtn={this.goToNote.bind(this)}
-                            //     onLongPressBtn={this.longPressNote.bind(this)}
-                            //   />
                             <Card>
                                 <CardItem header button onPress={() => this.goToNote(note.id, note.title, note.description)}>
-                                    <Text>{note.title}</Text>
+                                    <Body>
+                                        <Text>{note.title}</Text>
+                                        <Text note>{note.datetime}</Text>
+                                    </Body>
                                 </CardItem>
-                                <CardItem button onPress={() => this.pressNote(note.id)}>
+                                <CardItem button onPress={() => this.goToNote(note.id, note.title, note.description)}>
                                     <Body>
                                         <Text>
                                             {note.description}
                                         </Text>
                                     </Body>
+                                </CardItem>
+                                <CardItem style={{ paddingVertical: 0 }}>
+                                    <Left>
+                                        <Ionicons
+                                            name="ios-trash"
+                                            size={25}
+                                            color="black"
+                                            onPress={() => this.pressNote(note.id)}
+                                        />
+                                    </Left>
                                 </CardItem>
                             </Card>
                         )
@@ -131,3 +141,16 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, { deleteNote })(Diary)
+
+const styles = StyleSheet.create({
+    emptyListContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 56,
+        marginTop: 100
+    },
+    emptyList: {
+        fontFamily: 'Lato-Regular',
+        fontSize: 16
+    },
+});

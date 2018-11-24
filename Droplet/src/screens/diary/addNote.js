@@ -17,7 +17,8 @@ class AddNewNote extends Component {
     add() {
         this.props.addNote({
             title: this.state.title,
-            description: this.state.desc
+            description: this.state.desc,
+            datetime: new Date().toDateString()
         })
         this.props.navigation.goBack()
     }
@@ -48,25 +49,23 @@ class AddNewNote extends Component {
                 </Header>
                 <View>
                     <TextInput
-                        //style={styles.inputTitleStyle}
+                        style={styles.inputTitleStyle}
                         autoFocus={true}
-                        placeholder='Note Title...'
+                        placeholder='Enter Title Here'
                         placeholderTextColor='#aaa'
                         returnKeyType='next'
                         underlineColorAndroid="transparent"
-                        // selectionColor={getColor('paperTeal')}
                         onChangeText={(text) => this.setState({ title: text })}
                         value={this.state.title}
                     />
 
                     <TextInput
-                        //style={styles.inputDescriptionStyle}
+                        style={styles.inputDescriptionStyle}
                         multiline={true}
-                        placeholder='Note Description...'
+                        placeholder='Type Out Your Journal Here'
                         placeholderTextColor='#aaa'
                         returnKeyType='return'
                         underlineColorAndroid="transparent"
-                        //selectionColor={getColor('paperTeal')}
                         onChangeText={(text) => this.setState({ desc: text })}
                         value={this.state.desc}
                     />
@@ -77,3 +76,25 @@ class AddNewNote extends Component {
 }
 
 export default connect(null, { addNote })(AddNewNote)
+
+
+const styles = StyleSheet.create({
+    inputTitleStyle: {
+        height: 60,
+        paddingTop: 5,
+        paddingLeft: 20,
+        paddingRight: 20,
+        paddingBottom: 0,
+        fontFamily: 'Lato-Regular',
+        fontSize: 20
+      },
+      inputDescriptionStyle: {
+        //flex: 1,
+        paddingLeft: 20,
+        paddingRight: 20,
+        marginBottom: 60,
+        fontFamily: 'Lato-Regular',
+        fontSize: 16,
+        textAlignVertical: 'top'
+      }
+});
