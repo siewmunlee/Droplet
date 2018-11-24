@@ -2,20 +2,27 @@ import React, { Component } from 'react'
 import { Text, View, TextInput, BackAndroid, StatusBar, StyleSheet, ListView, Alert } from 'react-native'
 import { Container, Title, Header, Icon, Left, Body, Right, Button } from "native-base";
 import { connect } from 'react-redux'
-import { addNote } from '../../actions'
+import { updateNote } from '../../actions'
 
-class AddNewNote extends Component {
+class editNewNote extends Component {
     constructor(props) {
-        super(props);
+        super(props)
+
+        const { navigation } = this.props;
+        const noteId = navigation.getParam('noteId', 'NO-ID');
+        const noteTitle = navigation.getParam('title', 'some default value');
+        const noteDesc =  navigation.getParam('description', 'some default value');
 
         this.state = {
-            title: '',
-            desc: ''
+            changed: false,
+            id: noteId,
+            title: noteTitle,
+            desc: noteDesc
         }
     }
-
-    add() {
-        this.props.addNote({
+    update() {
+        this.props.updateNote({
+            id: this.state.id,
             title: this.state.title,
             description: this.state.desc
         })
@@ -35,12 +42,12 @@ class AddNewNote extends Component {
                         </Button>
                     </Left>
                     <Body>
-                        <Title>New Note</Title>
+                        <Title>Edit Note</Title>
                     </Body>
                     <Right>
                         <Button
                             transparent
-                            onPress={() => this.add()}
+                            onPress={() => this.update()}
                         >
                             <Text>Done</Text>
                         </Button>
@@ -55,7 +62,7 @@ class AddNewNote extends Component {
                         returnKeyType='next'
                         underlineColorAndroid="transparent"
                         // selectionColor={getColor('paperTeal')}
-                        onChangeText={(text) => this.setState({ title: text })}
+                        onChangeText={(text) => this.setState({ title: text, changed: true })}
                         value={this.state.title}
                     />
 
@@ -67,7 +74,7 @@ class AddNewNote extends Component {
                         returnKeyType='return'
                         underlineColorAndroid="transparent"
                         //selectionColor={getColor('paperTeal')}
-                        onChangeText={(text) => this.setState({ desc: text })}
+                        onChangeText={(text) => this.setState({ desc: text, changed: true })}
                         value={this.state.desc}
                     />
                 </View>
@@ -76,4 +83,4 @@ class AddNewNote extends Component {
     }
 }
 
-export default connect(null, { addNote })(AddNewNote)
+export default connect(null, { updateNote })(editNewNote)

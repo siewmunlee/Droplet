@@ -16,6 +16,7 @@ import Profile from "../screens/profile/"
 import Slider1 from "../screens/home/Slider1"
 import Chat from "../screens/inbox/chat"
 import NewNote from "../screens/diary/addNote"
+import EditNote from "../screens/diary/editNote"
 
 import SideBar from "../screens/sidebar";
 
@@ -69,7 +70,8 @@ const MainNavigator = createStackNavigator({
   Drawer: { screen: Drawer },
   Slider1: { screen: Slider1 },
   Chat: { screen: Chat },
-  NewNote: { screen: NewNote }
+  NewNote: { screen: NewNote },
+  EditNote: { screen: EditNote }
 },
   {
     initialRouteName: "Drawer",

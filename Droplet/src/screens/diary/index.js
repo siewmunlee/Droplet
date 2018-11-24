@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ImageBackground, View, StatusBar, ListView } from "react-native";
+import { ImageBackground, View, StatusBar, ListView, Alert } from "react-native";
 import { Container, Button, Text, Title, Header, Icon, Left, Body, Right, Fab, IconNB, Card, CardItem } from "native-base";
 import { DrawerActions } from 'react-navigation-drawer';
 import { connect } from 'react-redux'
@@ -12,6 +12,29 @@ class Diary extends Component {
             active: false
         };
     }
+
+    pressNote(noteId) {
+        Alert.alert(
+          'Delete Journal',
+          'Do you want to delete this journal?',
+          [
+            { text: 'YES', onPress: () => this.deleteNote(noteId) },
+            { text: 'No' }
+          ]
+        )
+      }
+    
+      deleteNote(noteId) {
+        this.props.deleteNote(noteId)
+      }
+
+      goToNote(Id, Title, Description) {
+        this.props.navigation.navigate("EditNote", {
+            noteId: Id,
+            title: Title,
+            description: Description
+        });
+      }
 
     render() {
         return (
@@ -84,10 +107,10 @@ class Diary extends Component {
                             //     onLongPressBtn={this.longPressNote.bind(this)}
                             //   />
                             <Card>
-                                <CardItem header>
+                                <CardItem header button onPress={() => this.goToNote(note.id, note.title, note.description)}>
                                     <Text>{note.title}</Text>
                                 </CardItem>
-                                <CardItem>
+                                <CardItem button onPress={() => this.pressNote(note.id)}>
                                     <Body>
                                         <Text>
                                             {note.description}
