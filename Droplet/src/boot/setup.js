@@ -2,6 +2,9 @@ import * as Expo from "expo";
 import React, { Component } from "react";
 import { StyleProvider } from "native-base";
 import { createStackNavigator, createDrawerNavigator, createAppContainer, createSwitchNavigator } from "react-navigation";
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import * as storage from 'redux-storage'
 
 import App from "../App";
 
@@ -12,8 +15,12 @@ import Diary from "../screens/diary/"
 import Profile from "../screens/profile/"
 import Slider1 from "../screens/home/Slider1"
 import Chat from "../screens/inbox/chat"
+import NewNote from "../screens/diary/addNote"
 
 import SideBar from "../screens/sidebar";
+
+import ApplicationStore from '../reducers'
+import createEngine from 'redux-storage-engine-reactnativeasyncstorage'
 
 async function getToken() {
   // Remote notifications do not work in simulators, only on device
@@ -31,15 +38,23 @@ async function getToken() {
   /// Send this to a server
 }
 
+const reducer = storage.reducer(ApplicationStore);
+const engine = createEngine('notes-app-store')
+const middleware = storage.createMiddleware(engine)
+const createStoreWithMiddleware = applyMiddleware(middleware)(createStore)
+const store = createStoreWithMiddleware(reducer)
+
+const load = storage.createLoader(engine)
+load(store)
 
 
 // Drawer navigation here
 const Drawer = createDrawerNavigator({
-    Home: { screen: Home },
-    Inbox: {screen: Inbox},
-    Diary: {screen: Diary},
-    Profile: {screen: Profile}
-  },
+  Home: { screen: Home },
+  Inbox: { screen: Inbox },
+  Diary: { screen: Diary },
+  Profile: { screen: Profile }
+},
   {
     initialRouteName: "Home",
     contentOptions: {
@@ -51,10 +66,11 @@ const Drawer = createDrawerNavigator({
 
 // Main navigation which includes drawers and other stuffs
 const MainNavigator = createStackNavigator({
-    Drawer: { screen: Drawer },
-    Slider1: {screen: Slider1},
-    Chat: {screen: Chat}
-  },
+  Drawer: { screen: Drawer },
+  Slider1: { screen: Slider1 },
+  Chat: { screen: Chat },
+  NewNote: { screen: NewNote }
+},
   {
     initialRouteName: "Drawer",
     headerMode: "none"
@@ -76,16 +92,16 @@ export default class Setup extends Component {
       isReady: false
     };
   }
-    componentDidMount() {
+  componentDidMount() {
     getToken();
 
     this.listener = Expo.Notifications.addListener(this.handleNotification);
   }
   componentWillMount() {
     this.loadFonts();
-	this.listener && this.listener.remove();
+    this.listener && this.listener.remove();
   }
-    handleNotification = ({ origin, data }) => {
+  handleNotification = ({ origin, data }) => {
     console.log(
       `Push notification ${origin} with data: ${JSON.stringify(data)}`,
     );
@@ -105,7 +121,9 @@ export default class Setup extends Component {
       return <Expo.AppLoading />;
     }
     return (
-      <AppNavigator />
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
     );
   }
 }

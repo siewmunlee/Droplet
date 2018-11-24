@@ -37,7 +37,8 @@ export default class Home extends Component {
                             transparent
                             onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}
                         >
-                            <Icon name="menu" />
+                            {/* <Icon name="menu" /> */}
+                            <Text>Menu</Text>
                         </Button>
                     </Left>
                     <Body>
