@@ -21,6 +21,7 @@ import Chat from "../screens/inbox/chat"
 import NewNote from "../screens/diary/addNote"
 import EditNote from "../screens/diary/editNote"
 import AudioNote from "../screens/diary/audioNote"
+import Slider5 from "../screens/home/Slider5"
 
 import SideBar from "../screens/sidebar";
 
@@ -80,6 +81,7 @@ const MainNavigator = createStackNavigator({
   Slider2: {screen: Slider2},
   Slider3: {screen: Slider3},
   Slider4: {screen: Slider4},
+  Slider5: {screen: Slider5},
 },
   {
     initialRouteName: "Drawer",

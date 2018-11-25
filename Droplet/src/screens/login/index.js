@@ -5,7 +5,7 @@ import {
 } from "native-base";
 import { StyleSheet, Image } from "react-native"
 import { NavigationActions, StackActions } from 'react-navigation';
-
+const splashscreen = require("../../../assets/MEXICO.png");
 
 export default class Login extends Component {
     constructor(props) {
@@ -15,7 +15,11 @@ export default class Login extends Component {
         return (
             <Container style={styles.container}>
                 <Content>
-                    {/* <Image /> */}
+                <Image
+                  source={splashscreen}
+                  style={{width:250, height:250 ,  marginLeft: 50,marginTop:80 , 
+                    marginRight: 50}}
+                />
                 </Content>
                 <Content>
                     <Form>
@@ -28,8 +32,8 @@ export default class Login extends Component {
                             <Input secureTextEntry/>
                         </Item>
                     </Form>
-                    <Button 
-                        block 
+                    <Button
+                        block
                         style={styles.button}
                         onPress={() => this.props.navigation.navigate('Home')}
                     >

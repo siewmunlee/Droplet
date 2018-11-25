@@ -13,15 +13,19 @@ const datas =
     }
   ;
 
-export default class Slider3 extends Component {
+export default class Slider5 extends Component {
   constructor(props) {
      super(props);
       this.state = { age: 45 , age1:45,age2: 45 , age3:45,age4: 45 , age5:45,isHidden: false,
         distance: 30,
         minDistance: 10,
-        maxDistance: 100}
+        maxDistance: 100,
+      date1:date = new Date().getDate(),
+    month1: new Date().getMonth() + 1,
+  year1:year = new Date().getFullYear()}
 
    }
+
    getVal(val){
    //console.warn(val);
    }
@@ -51,40 +55,16 @@ export default class Slider3 extends Component {
                     </Body>
                     <Right />
                 </Header>
-              <Text style={{textAlign: 'center', fontSize:30,marginBottom:20,fontWeight: 'bold',marginTop: 0,color: 'red',}}>Record Your Mood</Text>
+              <Text style={{textAlign: 'center', fontSize:30,marginBottom:20,fontWeight: 'bold',marginTop: 0,color: 'red',}}>Completed</Text>
         <ScrollView style={styles.scrollContainer}>
             <View style={styles.container}>
               <View style={styles.box} hide={this.state.isHidden}>
-<Text style={{textAlign: 'center', fontSize:15,marginBottom:20,fontWeight: 'bold',marginTop: 0,color: 'blue',}}>Where do you stand between the following two categories? </Text>
-<Slider
-style={{ width: 300}}
-step={1}
-minimumValue={18}
-maximumValue={71}
-thumbImage={true}
-thumbTintColor='rgb(252, 228, 149)'
+<Text style={{textAlign: 'center', fontSize:15,marginBottom:20,fontWeight: 'bold',marginTop: 0,color: 'blue',}}>You have completed Entry for:{this.state.date1}/{this.state.month1}/{this.state.year1}!  </Text>
 
-/>
-<View style={styles.textCon}>
-<Image
-  source={sad}
-  style={{width:50, height:50 }}
-/>
 
-<Image
-  source={happy}
-  style={{width:60, height:60 }}
-/>
-        </View>
-
-        <View style={styles.textCon}>
-        <Text>Tense</Text>
-
-        <Text>Relaxed</Text>
-                </View>
 
                 <View style={styles.buttonContainer}>
-                  <TouchableHighlight style={[styles.button]} onPress={() => this.props.navigation.navigate('Slider4')}>
+                  <TouchableHighlight style={[styles.button]} onPress={() => this.props.navigation.navigate('Profile')}>
                     <Image style={styles.icon} source={{uri: 'https://img.icons8.com/flat_round/50/000000/right.png'}}/>
                   </TouchableHighlight>
 

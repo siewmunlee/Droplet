@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Container, Button, H3, Text, Title, Header, Icon, Left, Body, Right,Content } from "native-base";
 import { DrawerActions } from 'react-navigation-drawer';
-import {ImageBackground, StatusBar, StyleSheet,View,Image,TouchableOpacity} from 'react-native';
+import {TouchableHighlight,ImageBackground, StatusBar, StyleSheet,View,Image,TouchableOpacity,Dimensions } from 'react-native';
 import PureChart from 'react-native-pure-chart';
+const splashscreen = require("../../../assets/chatbot.png");
 export default class Profile extends Component {
     render() {
         return (
@@ -34,7 +35,16 @@ export default class Profile extends Component {
                            </Text>
                        </View>
                      </View>
-
+                     <TouchableHighlight onPress={() => this.props.navigation.navigate('Chat')}>
+                  <Image
+                    source={splashscreen}
+                    style={{width:100, height:100 ,  marginLeft: 130,
+                      marginRight: 100}}
+                  />
+                   </TouchableHighlight>
+                  <Text style={{textAlign: 'center'}}>
+                    Your Anxiety level is high,click on the chatbot above for some advice on managing your Anxiety.
+                  </Text>
            			  <View style={styles.bodyContent}>
            			   <PureChart data={sampleData} type='line' />
                    <Text >
@@ -76,6 +86,8 @@ let sampleData = [
       {x: '2018-02-02', y: 200},
       {x: '2018-02-03', y: 170},
       {x: '2018-02-04', y: 250},
+      {x: '2018-02-05', y: 10},
+      {x: '2018-02-04', y: 250},
       {x: '2018-02-05', y: 10}
     ],
     color: '#297AB1',
@@ -92,7 +104,9 @@ let sampleData1 = [
       {x: '2018-02-02', y: 100},
       {x: '2018-02-03', y: 140},
       {x: '2018-02-04', y: 550},
-      {x: '2018-02-05', y: 40}
+      {x: '2018-02-05', y: 40},
+      {x: '2018-02-04', y: 250},
+      {x: '2018-02-05', y: 10}
     ],
     color: 'red'
 
