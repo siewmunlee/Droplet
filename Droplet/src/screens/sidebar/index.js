@@ -38,6 +38,7 @@ const datas = [
     bg: "#4DCAE0"
   }
 ];
+const drawerCover = require("../../../assets/drawer-cover.png");
 
 class SideBar extends Component {
   constructor(props) {
@@ -55,8 +56,7 @@ class SideBar extends Component {
           bounces={false}
           style={{ flex: 1, backgroundColor: "#fff", top: -1 }}
         >
-          <Image style={styles.drawerCover} />
-          <Image square style={styles.drawerImage} />
+          <Image source={drawerCover} style={styles.drawerCover} />
 
           <List
             dataArray={datas}

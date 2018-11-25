@@ -8,7 +8,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import Fire from './Fire';
 
 const useracc = {
-  name: "Fam"
+  name: "Bot"
 }
 
 class Chat extends Component {
