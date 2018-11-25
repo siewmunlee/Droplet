@@ -11,6 +11,9 @@ import Inbox from "../screens/inbox/"
 import About from "../screens/about/"
 import Profile from "../screens/profile/"
 import Slider1 from "../screens/home/Slider1"
+import Slider2 from "../screens/home/Slider2"
+import Slider3 from "../screens/home/Slider3"
+import Slider4 from "../screens/home/Slider4"
 import Chat from "../screens/inbox/chat"
 
 import SideBar from "../screens/sidebar";
@@ -53,6 +56,9 @@ const Drawer = createDrawerNavigator({
 const MainNavigator = createStackNavigator({
     Drawer: { screen: Drawer },
     Slider1: {screen: Slider1},
+    Slider2: {screen: Slider2},
+    Slider3: {screen: Slider3},
+    Slider4: {screen: Slider4},
     Chat: {screen: Chat}
   },
   {

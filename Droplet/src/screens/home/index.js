@@ -16,10 +16,10 @@ export default class Home extends Component {
     super(props);
     this.state = {
       data: [
-        {id:1, title: "Anxiety",      color:"#FF4500",   image:"https://img.icons8.com/color/70/000000/name.png"},
-        {id:1, title: "Depression",     color:"#87CEEB",   image:"https://img.icons8.com/office/70/000000/home-page.png"},
-        {id:2, title: "General Well-Being",     color:"#4682B4",  image:"https://img.icons8.com/color/70/000000/two-hearts.png"} ,
-        {id:3, title: "Stress",   color:"#6A5ACD",   image:"https://img.icons8.com/color/70/000000/family.png"} ,
+        {id:1, title: "Anxiety",      color:"#FF4500",   image:"https://img.icons8.com/color/70/000000/name.png",route: "Slider1"},
+        {id:1, title: "Depression",     color:"#87CEEB",   image:"https://img.icons8.com/office/70/000000/home-page.png",route: "Slider2"},
+        {id:2, title: "General Well-Being",     color:"#4682B4",  image:"https://img.icons8.com/color/70/000000/two-hearts.png",route: "Slider3"} ,
+        {id:3, title: "Stress",   color:"#6A5ACD",   image:"https://img.icons8.com/color/70/000000/family.png",route: "Slider4"} ,
 
       ]
     };
@@ -58,7 +58,7 @@ export default class Home extends Component {
                     }}
                     renderItem={({item}) => {
                       return (
-                        <TouchableOpacity style={[styles.card, {backgroundColor:item.color}]} onPress={() =>  this.props.navigation.navigate(datas.route)}>
+                        <TouchableOpacity style={[styles.card, {backgroundColor:item.color}]} onPress={() =>  this.props.navigation.navigate(item.route)}>
                           <View style={styles.cardHeader}>
                             <Text style={styles.title}>{item.title}</Text>
                           </View>

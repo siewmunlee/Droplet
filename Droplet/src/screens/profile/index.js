@@ -35,14 +35,33 @@ export default class Profile extends Component {
                        </View>
                      </View>
 
-
-
-
            			  <View style={styles.bodyContent}>
            			   <PureChart data={sampleData} type='line' />
+                   <Text >
+                     Anxiety
+                   </Text>
            			   </View>
 
+                   <View style={styles.bodyContent}>
+                    <PureChart data={sampleData1} type='line' />
+                    <Text >
+                      Depression
+                    </Text>
+                    </View>
 
+                    <View style={styles.bodyContent}>
+                      <PureChart data={sampleData} type='line' />
+                     <Text >
+                       General Well-Being
+                     </Text>
+                      </View>
+
+                   <View style={styles.bodyContent}>
+                    <PureChart data={sampleData1} type='line' />
+                    <Text >
+                      Stress
+                    </Text>
+                    </View>
                  </View>
         </Content>
             </Container>
@@ -61,7 +80,11 @@ let sampleData = [
     ],
     color: '#297AB1',
 
-  },
+  }
+
+]
+
+let sampleData1 = [
   {
     seriesName: 'series2',
     data: [
@@ -72,8 +95,15 @@ let sampleData = [
       {x: '2018-02-05', y: 40}
     ],
     color: 'red'
+
   }
+
 ]
+
+
+
+
+
 
 const styles = StyleSheet.create({
 header:{

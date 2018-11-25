@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {StyleSheet,View,Slider} from 'react-native';
 import { Container, Header, H3, Title, Content, Button, Item, Label, Input, Body, Left, Right, Icon, Text } from "native-base";
-export default class Slider1 extends React.Component  {
+export default class Slider3 extends React.Component  {
   constructor(props) {
    super(props)
    this.state = { age: 45 , age1:45,age2: 45 , age3:45,age4: 45 , age5:45}
@@ -20,7 +20,7 @@ export default class Slider1 extends React.Component  {
             </Button>
           </Left>
           <Body>
-            <Title><H3>Anxiety</H3></Title>
+            <Title><H3>General Well-Being</H3></Title>
           </Body>
           <Right />
         </Header>
@@ -38,7 +38,7 @@ export default class Slider1 extends React.Component  {
             {this.state.age}
           </Text>
           <Text style={styles.instructions}>
-            Worried -------- Untroubled
+            Sad -------- Happy
           </Text>
 
       <Slider
@@ -54,7 +54,7 @@ export default class Slider1 extends React.Component  {
             {this.state.age1}
           </Text>
         <Text style={styles.instructions}>
-            Pressured -------- Calm
+            Tired -------- Energetic
           </Text>
 
       <Slider
@@ -70,7 +70,7 @@ export default class Slider1 extends React.Component  {
             {this.state.age2}
           </Text>
         <Text style={styles.instructions}>
-           Tense -------- Relaxed
+           Worried -------- Calm
           </Text>
 
       <Slider
@@ -86,7 +86,7 @@ export default class Slider1 extends React.Component  {
             {this.state.age3}
           </Text>
         <Text style={styles.instructions}>
-            Sleepless -------- Rested
+            Tense -------- Relaxed
           </Text>
 
       <Slider
@@ -102,7 +102,7 @@ export default class Slider1 extends React.Component  {
             {this.state.age4}
           </Text>
         <Text style={styles.instructions}>
-            Distracted -------- Focused
+            Pessimistic -------- Optimistic
           </Text>
 
       <Slider
@@ -118,7 +118,7 @@ export default class Slider1 extends React.Component  {
             {this.state.age5}
           </Text>
         <Text style={styles.instructions}>
-            Irritable -------- Cheerful
+            Hopeless -------- Hopeful
           </Text>
 
 
