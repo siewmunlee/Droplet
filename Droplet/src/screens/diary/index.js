@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
         marginTop: 100
     },
     emptyList: {
-        fontFamily: 'Lato-Regular',
+        fontFamily: 'Lato_Regular',
         fontSize: 16
     },
 });

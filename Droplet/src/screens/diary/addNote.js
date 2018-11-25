@@ -64,7 +64,7 @@ class AddNewNote extends Component {
                         multiline={true}
                         placeholder='Type Out Your Journal Here'
                         placeholderTextColor='#aaa'
-                        returnKeyType='return'
+                        returnKeyType='next'
                         underlineColorAndroid="transparent"
                         onChangeText={(text) => this.setState({ desc: text })}
                         value={this.state.desc}
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 20,
         paddingBottom: 0,
-        fontFamily: 'Lato-Regular',
+        fontFamily: 'Lato_Regular',
         fontSize: 20
       },
       inputDescriptionStyle: {
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 20,
         marginBottom: 60,
-        fontFamily: 'Lato-Regular',
+        fontFamily: 'Lato_Regular',
         fontSize: 16,
         textAlignVertical: 'top'
       }

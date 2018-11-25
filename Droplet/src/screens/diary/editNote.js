@@ -58,7 +58,7 @@ class editNewNote extends Component {
                     <TextInput
                         style={styles.inputTitleStyle}
                         autoFocus={true}
-                        placeholder='Note Title...'
+                        placeholder='Enter Title Here'
                         placeholderTextColor='#aaa'
                         returnKeyType='next'
                         underlineColorAndroid="transparent"
@@ -69,9 +69,9 @@ class editNewNote extends Component {
                     <TextInput
                         style={styles.inputDescriptionStyle}
                         multiline={true}
-                        placeholder='Note Description...'
+                        placeholder='Type Out Your Journal Here'
                         placeholderTextColor='#aaa'
-                        returnKeyType='return'
+                        returnKeyType='next'
                         underlineColorAndroid="transparent"
                         onChangeText={(text) => this.setState({ desc: text, changed: true })}
                         value={this.state.desc}
@@ -91,15 +91,14 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 20,
         paddingBottom: 0,
-        fontFamily: 'Lato-Regular',
+        fontFamily: 'Lato_Regular',
         fontSize: 20
       },
       inputDescriptionStyle: {
-        //flex: 1,
         paddingLeft: 20,
         paddingRight: 20,
         marginBottom: 60,
-        fontFamily: 'Lato-Regular',
+        fontFamily: 'Lato_Regular',
         fontSize: 16,
         textAlignVertical: 'top'
       }
