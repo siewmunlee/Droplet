@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { Text, View, TextInput, BackAndroid, StatusBar, StyleSheet, ListView, Alert } from 'react-native'
-import { Container, Title, Header, Icon, Left, Body, Right, Button } from "native-base";
+import { Container, Title, Header, Icon, Left, Body, Right, Button, ActionSheet } from "native-base";
 import { connect } from 'react-redux'
+import Ionicons from "react-native-vector-icons/Ionicons";
 import { addNote } from '../../actions'
+
+var BUTTONS = ["Attach Image", "Record Audio", "Cancel"];
 
 class AddNewNote extends Component {
     constructor(props) {
@@ -32,18 +35,41 @@ class AddNewNote extends Component {
                             transparent
                             onPress={() => this.props.navigation.goBack()}
                         >
-                            <Text>Back</Text>
+                            <Ionicons
+                                name="ios-arrow-back"
+                                size={25}
+                            />
                         </Button>
                     </Left>
                     <Body>
-                        <Title>New Note</Title>
+                        <Title>New Journal Entry</Title>
                     </Body>
                     <Right>
                         <Button
                             transparent
+                            onPress={() => ActionSheet.show(
+                                {
+                                    options: BUTTONS,
+                                    cancelButtonIndex: 2,
+                                },
+                                buttonIndex => {
+                                    this.setState({ clicked: BUTTONS[buttonIndex] });
+                                }
+                            )}
+                        >
+                            <Ionicons
+                                name="md-add-circle-outline"
+                                size={25}
+                            />
+                        </Button>
+                        <Button
+                            transparent
                             onPress={() => this.add()}
                         >
-                            <Text>Done</Text>
+                            <Ionicons
+                                name="md-checkmark"
+                                size={25}
+                            />
                         </Button>
                     </Right>
                 </Header>
@@ -87,8 +113,8 @@ const styles = StyleSheet.create({
         paddingBottom: 0,
         fontFamily: 'Lato_Regular',
         fontSize: 20
-      },
-      inputDescriptionStyle: {
+    },
+    inputDescriptionStyle: {
         //flex: 1,
         paddingLeft: 20,
         paddingRight: 20,
@@ -96,5 +122,5 @@ const styles = StyleSheet.create({
         fontFamily: 'Lato_Regular',
         fontSize: 16,
         textAlignVertical: 'top'
-      }
+    }
 });

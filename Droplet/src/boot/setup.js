@@ -1,6 +1,6 @@
 import * as Expo from "expo";
 import React, { Component } from "react";
-import { StyleProvider } from "native-base";
+import { StyleProvider, Root } from "native-base";
 import { createStackNavigator, createDrawerNavigator, createAppContainer, createSwitchNavigator } from "react-navigation";
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
@@ -20,7 +20,6 @@ import Slider4 from "../screens/home/Slider4"
 import Chat from "../screens/inbox/chat"
 import NewNote from "../screens/diary/addNote"
 import EditNote from "../screens/diary/editNote"
-import AudioNote from "../screens/diary/audioNote"
 
 import SideBar from "../screens/sidebar";
 
@@ -76,10 +75,9 @@ const MainNavigator = createStackNavigator({
   Chat: { screen: Chat },
   NewNote: { screen: NewNote },
   EditNote: { screen: EditNote },
-  AudioNote: { screen: AudioNote },
-  Slider2: {screen: Slider2},
-  Slider3: {screen: Slider3},
-  Slider4: {screen: Slider4},
+  Slider2: { screen: Slider2 },
+  Slider3: { screen: Slider3 },
+  Slider4: { screen: Slider4 },
 },
   {
     initialRouteName: "Drawer",
@@ -133,7 +131,9 @@ export default class Setup extends Component {
     }
     return (
       <Provider store={store}>
-        <AppNavigator />
+        <Root>
+          <AppNavigator />
+        </Root>
       </Provider>
     );
   }

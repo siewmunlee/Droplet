@@ -47,8 +47,10 @@ class Diary extends Component {
                             transparent
                             onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}
                         >
-                            {/* <Icon name="menu" /> */}
-                            <Text>Menu</Text>
+                            <Ionicons
+                                name="ios-menu"
+                                size={25}
+                            />
                         </Button>
                     </Left>
                     <Body>
@@ -64,21 +66,9 @@ class Diary extends Component {
                         containerStyle={{}}
                         style={{ backgroundColor: "#5067FF" }}
                         position="bottomRight"
-                        onPress={() => this.setState({ active: !this.state.active })}
+                        onPress={() => this.props.navigation.navigate("NewNote")}
                     >
                         <IconNB name="md-add" />
-                        <Button
-                            style={{ backgroundColor: "#34A34F" }}
-                            onPress={() => this.props.navigation.navigate("NewNote")}
-                        >
-                            <IconNB name="attach" />
-                        </Button>
-                        <Button 
-                            style={{ backgroundColor: "#DD5144" }}
-                            onPress={() => this.props.navigation.navigate("AudioNote")}
-                        >
-                            <IconNB name="microphone" />
-                        </Button>
                     </Fab>
                 </View>
             </Container>

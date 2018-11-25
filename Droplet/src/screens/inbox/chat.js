@@ -42,7 +42,10 @@ class Chat extends Component {
         <Header>
           <Left>
             <Button transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-back" />
+              <Ionicons
+                name="ios-arrow-back"
+                size={25}
+              />
             </Button>
           </Left>
           <Body>
@@ -54,27 +57,27 @@ class Chat extends Component {
           messages={this.state.messages}
           onSend={Fire.shared.send}
           user={this.user}
-        renderActions={() => {
-          return (
-            <Ionicons
-              name="ios-mic"
-              size={35}
-              hitSlop={{ top: 20, bottom: 20, left: 50, right: 50 }}
-              color={this.state.startAudio ? "red" : "black"}
-              style={{
-                bottom: 50,
-                right: Dimensions.get("window").width / 2,
-                position: "absolute",
-                shadowColor: "#000",
-                shadowOffset: { width: 0, height: 0 },
-                shadowOpacity: 0.5,
-                zIndex: 2,
-                backgroundColor: "transparent"
-              }}
-              onPress={this.handleAudio}
-            />
-          );
-        }}
+          renderActions={() => {
+            return (
+              <Ionicons
+                name="ios-mic"
+                size={35}
+                hitSlop={{ top: 20, bottom: 20, left: 50, right: 50 }}
+                color={this.state.startAudio ? "red" : "black"}
+                style={{
+                  bottom: 50,
+                  right: Dimensions.get("window").width / 2,
+                  position: "absolute",
+                  shadowColor: "#000",
+                  shadowOffset: { width: 0, height: 0 },
+                  shadowOpacity: 0.5,
+                  zIndex: 2,
+                  backgroundColor: "transparent"
+                }}
+                onPress={this.handleAudio}
+              />
+            );
+          }}
         />
       </Container>
     );

@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { Text, View, TextInput, BackAndroid, StatusBar, StyleSheet, ListView, Alert } from 'react-native'
-import { Container, Title, Header, Icon, Left, Body, Right, Button } from "native-base";
+import { Container, Title, Header, Icon, Left, Body, Right, Button, ActionSheet } from "native-base";
 import { connect } from 'react-redux'
+import Ionicons from "react-native-vector-icons/Ionicons";
 import { updateNote } from '../../actions'
+
+var BUTTONS = ["Attach Image", "Record Audio", "Cancel"];
 
 class editNewNote extends Component {
     constructor(props) {
@@ -11,7 +14,7 @@ class editNewNote extends Component {
         const { navigation } = this.props;
         const noteId = navigation.getParam('noteId', 'NO-ID');
         const noteTitle = navigation.getParam('title', 'some default value');
-        const noteDesc =  navigation.getParam('description', 'some default value');
+        const noteDesc = navigation.getParam('description', 'some default value');
 
         this.state = {
             changed: false,
@@ -39,18 +42,41 @@ class editNewNote extends Component {
                             transparent
                             onPress={() => this.props.navigation.goBack()}
                         >
-                            <Text>Back</Text>
+                            <Ionicons
+                                name="ios-arrow-back"
+                                size={25}
+                            />
                         </Button>
                     </Left>
                     <Body>
-                        <Title>Edit Note</Title>
+                        <Title>Edit Journal Entry</Title>
                     </Body>
                     <Right>
                         <Button
                             transparent
+                            onPress={() => ActionSheet.show(
+                                {
+                                    options: BUTTONS,
+                                    cancelButtonIndex: 2,
+                                },
+                                buttonIndex => {
+                                    this.setState({ clicked: BUTTONS[buttonIndex] });
+                                }
+                            )}
+                        >
+                            <Ionicons
+                                name="md-add-circle-outline"
+                                size={25}
+                            />
+                        </Button>
+                        <Button
+                            transparent
                             onPress={() => this.update()}
                         >
-                            <Text>Done</Text>
+                            <Ionicons
+                                name="md-checkmark"
+                                size={25}
+                            />
                         </Button>
                     </Right>
                 </Header>
@@ -93,13 +119,13 @@ const styles = StyleSheet.create({
         paddingBottom: 0,
         fontFamily: 'Lato_Regular',
         fontSize: 20
-      },
-      inputDescriptionStyle: {
+    },
+    inputDescriptionStyle: {
         paddingLeft: 20,
         paddingRight: 20,
         marginBottom: 60,
         fontFamily: 'Lato_Regular',
         fontSize: 16,
         textAlignVertical: 'top'
-      }
+    }
 });

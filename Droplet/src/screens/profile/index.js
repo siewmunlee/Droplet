@@ -3,6 +3,9 @@ import { Container, Button, H3, Text, Title, Header, Icon, Left, Body, Right,Con
 import { DrawerActions } from 'react-navigation-drawer';
 import {ImageBackground, StatusBar, StyleSheet,View,Image,TouchableOpacity} from 'react-native';
 import PureChart from 'react-native-pure-chart';
+import Ionicons from "react-native-vector-icons/Ionicons";
+
+
 export default class Profile extends Component {
     render() {
         return (
@@ -13,7 +16,10 @@ export default class Profile extends Component {
                             transparent
                             onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}
                         >
-                            <Icon name="menu" />
+                            <Ionicons
+                                name="ios-menu"
+                                size={25}
+                            />
                         </Button>
                     </Left>
                     <Body>

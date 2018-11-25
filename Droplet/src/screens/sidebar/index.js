@@ -1,6 +1,7 @@
 import React, { Component, Platform, Dimensions } from "react";
 import { Image, StyleSheet } from "react-native";
-import { Content, Text, List, ListItem, Icon, Container, Left, Right, Badge} from "native-base";
+import { Content, Text, List, ListItem, Icon, Container, Left, Right, Badge } from "native-base";
+import Ionicons from "react-native-vector-icons/Ionicons";
 import styles from "./style";
 
 // Navigation items
@@ -9,31 +10,31 @@ const datas = [
   {
     name: "Home",
     route: "Home",
-    icon: "phone-portrait",
+    icon: "ios-home",
     bg: "#C5F442"
   },
   {
     name: "Profile",
     route: "Profile",
-    icon: "easel",
+    icon: "ios-person",
     bg: "#C5F442"
   },
   {
     name: "Chat Inbox",
     route: "Inbox",
-    icon: "phone-portrait",
+    icon: "ios-chatboxes",
     bg: "#477EEA"
   },
   {
     name: "Diary",
     route: "Diary",
-    icon: "phone-portrait",
+    icon: "ios-book",
     bg: "#DA4437"
   },
   {
     name: "Logout",
     route: "Login",
-    icon: "notifications",
+    icon: "ios-undo",
     bg: "#4DCAE0"
   }
 ];
@@ -54,8 +55,8 @@ class SideBar extends Component {
           bounces={false}
           style={{ flex: 1, backgroundColor: "#fff", top: -1 }}
         >
-          <Image  style={styles.drawerCover} />
-          <Image square style={styles.drawerImage}  />
+          <Image style={styles.drawerCover} />
+          <Image square style={styles.drawerImage} />
 
           <List
             dataArray={datas}
@@ -67,10 +68,10 @@ class SideBar extends Component {
               >
 
                 <Left>
-                  <Icon
-                    active
+                  <Ionicons
                     name={data.icon}
-                    style={{ color: "#777", fontSize: 26, width: 30 }}
+                    color="#777"
+                    size={25}
                   />
                   <Text style={styles.text}>
                     {data.name}

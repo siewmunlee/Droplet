@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { ImageBackground, View, StatusBar } from "react-native";
 import { Container, Button, H3, Text, Title, Header, Icon, Left, Body, Right, Content, List, ListItem } from "native-base";
 import { DrawerActions } from 'react-navigation-drawer';
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 const datas = [
     {
@@ -20,7 +21,10 @@ export default class Inbox extends Component {
                             transparent
                             onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}
                         >
-                            <Icon name="menu" />
+                            <Ionicons
+                                name="ios-menu"
+                                size={25}
+                            />
                         </Button>
                     </Left>
                     <Body>
