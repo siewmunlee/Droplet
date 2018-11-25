@@ -1,14 +1,18 @@
 import React, { Component } from "react";
 import { ImageBackground, View, StatusBar } from "react-native";
-import { Container, Button, H3, Text, Title, Header, Icon, Left, Body, Right, Content, List, ListItem } from "native-base";
+import { Container, Button, H3, Text, Title, Header, Icon, Left, Body, Right, Content, List, ListItem, Thumbnail } from "native-base";
 import { DrawerActions } from 'react-navigation-drawer';
+import Ionicons from "react-native-vector-icons/Ionicons";
+
+const counsellor = require("../../../assets/counsellor.png");
 
 const datas = [
     {
-      route: "Chat",
-      text: "Counsellor"
+        img: counsellor,
+        route: "Chat",
+        text: "Counsellor"
     }
-  ];
+];
 
 export default class Inbox extends Component {
     render() {
@@ -20,7 +24,10 @@ export default class Inbox extends Component {
                             transparent
                             onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}
                         >
-                            <Icon name="menu" />
+                            <Ionicons
+                                name="ios-menu"
+                                size={25}
+                            />
                         </Button>
                     </Left>
                     <Body>
@@ -30,24 +37,34 @@ export default class Inbox extends Component {
                 </Header>
 
                 <Content>
-          <List
-            dataArray={datas}
-            renderRow={data =>
-              <ListItem
-                button
-                onPress={() => this.props.navigation.navigate(data.route)}
-              >
-                <Left>
-                  <Text>
-                    {data.text}
-                  </Text>
-                </Left>
-                <Right>
-                  <Icon name="arrow-forward" style={{ color: "#999" }} />
-                </Right>
-              </ListItem>}
-          />
-        </Content>
+                    <List
+                        dataArray={datas}
+                        renderRow={data =>
+                            <ListItem thumbnail
+                                button
+                                onPress={() => this.props.navigation.navigate(data.route)}
+                            >
+                                <Left>
+                                    <Thumbnail square size={55} source={data.img} />
+                                </Left>
+                                <Body>
+                                    <Text>
+                                        {data.text}
+                                    </Text>
+                                    <Text numberOfLines={1} note>
+                                        Hello, this is a bot!
+                                    </Text>
+                                </Body>
+                                <Right>
+                                    <Ionicons
+                                        name="ios-arrow-forward"
+                                        color="#999"
+                                        size={25}
+                                    />
+                                </Right>
+                            </ListItem>}
+                    />
+                </Content>
             </Container>
         );
     }

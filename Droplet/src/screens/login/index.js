@@ -3,9 +3,10 @@ import {
     Container, Header, Title, Content, Button, Item, Label, Input,
     Body, Left, Right, Icon, Form, Text, Spinner
 } from "native-base";
-import { StyleSheet, Image } from "react-native"
+import { StyleSheet, Image, ImageBackground } from "react-native"
 import { NavigationActions, StackActions } from 'react-navigation';
-const splashscreen = require("../../../assets/MEXICO.png");
+
+const launchscreenLogo = require("../../../assets/icon.png");
 
 export default class Login extends Component {
     constructor(props) {
@@ -14,12 +15,9 @@ export default class Login extends Component {
     render() {
         return (
             <Container style={styles.container}>
+
                 <Content>
-                <Image
-                  source={splashscreen}
-                  style={{width:250, height:250 ,  marginLeft: 50,marginTop:80 , 
-                    marginRight: 50}}
-                />
+                    <Image source={launchscreenLogo} style={styles.logo} />
                 </Content>
                 <Content>
                     <Form>
@@ -29,7 +27,7 @@ export default class Login extends Component {
                         </Item>
                         <Item floatingLabel style={styles.input}>
                             <Label style={styles.label}>Password</Label>
-                            <Input secureTextEntry/>
+                            <Input secureTextEntry />
                         </Item>
                     </Form>
                     <Button
@@ -53,15 +51,22 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        backgroundColor: '#336699',
+        backgroundColor: '#e9ecef',
         flexDirection: 'column',
     },
     button: {
-        backgroundColor: '#ff3300',
+        backgroundColor: '#00bbe3',
         margin: 15,
         marginTop: 50
     },
     label: {
-        color: '#ccffff'
-    }
+        color: '#6c6c6c'
+    },
+    logo: {
+        position: "absolute",
+        left: Platform.OS === "android" ? 40 : 50,
+        top: Platform.OS === "android" ? 35 : 20,
+        width: 280,
+        height: 300
+      },
 })

@@ -1,6 +1,6 @@
 import * as Expo from "expo";
 import React, { Component } from "react";
-import { StyleProvider } from "native-base";
+import { StyleProvider, Root } from "native-base";
 import { createStackNavigator, createDrawerNavigator, createAppContainer, createSwitchNavigator } from "react-navigation";
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
@@ -122,7 +122,8 @@ export default class Setup extends Component {
     await Expo.Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
-      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
+      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
+      Lato_Regular: require("../../assets/fonts/Lato-Regular.ttf")
     });
     this.setState({ isReady: true });
   }
@@ -134,7 +135,9 @@ export default class Setup extends Component {
     }
     return (
       <Provider store={store}>
-        <AppNavigator />
+        <Root>
+          <AppNavigator />
+        </Root>
       </Provider>
     );
   }
