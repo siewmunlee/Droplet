@@ -9,7 +9,7 @@ const splashscreen = require("../../../assets/chatbot.png");
 export default class Profile extends Component {
   render() {
     return (
-      <Container>
+      <Container style={styles.containerBackground}>
         <Header>
           <Left>
             <Button
@@ -40,15 +40,6 @@ export default class Profile extends Component {
                            </Text>
               </View>
             </View>
-            {/* <TouchableHighlight onPress={() => this.props.navigation.navigate('Chat')}>
-              <Image
-                source={splashscreen}
-                style={{
-                  width: 100, height: 100, marginLeft: 130,
-                  marginRight: 100
-                }}
-              />
-            </TouchableHighlight> */}
             <Button full warning onPress={() => this.props.navigation.navigate('Inbox')}>
               <Text style={{ fontSize: 15 }}>
                 Your anxiety meter level is high, click here for some advice on managing your anxiety from our bot!
@@ -144,6 +135,9 @@ const styles = StyleSheet.create({
   headerContent: {
     padding: 30,
     alignItems: 'center',
+  },
+  containerBackground: {
+    backgroundColor: '#F0F0F0'
   },
   avatar: {
     width: 130,

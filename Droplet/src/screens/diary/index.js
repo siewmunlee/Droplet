@@ -40,7 +40,7 @@ class Diary extends Component {
 
     render() {
         return (
-            <Container>
+            <Container style={styles.containerBackground}>
                 <Header>
                     <Left>
                         <Button
@@ -93,10 +93,10 @@ class Diary extends Component {
                     dataSource={dataSource}
                     renderRow={(note, sectionID, rowID) => {
                         return (
-                            <Card>
+                            <Card style={styles.card}>
                                 <CardItem header button onPress={() => this.goToNote(note.id, note.title, note.description)}>
                                     <Body>
-                                        <Text>{note.title}</Text>
+                                        <Text style={styles.cardHeader}>{note.title}</Text>
                                         <Text note>{note.datetime}</Text>
                                     </Body>
                                 </CardItem>
@@ -139,8 +139,21 @@ const styles = StyleSheet.create({
         marginBottom: 56,
         marginTop: 100
     },
+    containerBackground: {
+        backgroundColor: '#F0F0F0'
+    },
     emptyList: {
         fontFamily: 'Lato_Regular',
         fontSize: 16
     },
+    card: {
+        marginLeft: 15,
+        marginRight: 15,
+        marginTop: 15,
+        paddingRight: 20
+    },
+    cardHeader: {
+        textAlign: 'center',
+        fontSize: 20
+    }
 });

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ImageBackground, View, StatusBar } from "react-native";
+import { ImageBackground, View, StatusBar, StyleSheet } from "react-native";
 import { Container, Button, H3, Text, Title, Header, Icon, Left, Body, Right, Content, List, ListItem, Thumbnail } from "native-base";
 import { DrawerActions } from 'react-navigation-drawer';
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -17,7 +17,7 @@ const datas = [
 export default class Inbox extends Component {
     render() {
         return (
-            <Container>
+            <Container style={styles.containerBackground}>
                 <Header>
                     <Left>
                         <Button
@@ -38,6 +38,7 @@ export default class Inbox extends Component {
 
                 <Content>
                     <List
+                        style={styles.List}
                         dataArray={datas}
                         renderRow={data =>
                             <ListItem thumbnail
@@ -69,3 +70,12 @@ export default class Inbox extends Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    containerBackground: {
+        backgroundColor: '#F0F0F0'
+    },
+    List: {
+        backgroundColor: '#FFFFFF'
+    }
+});
