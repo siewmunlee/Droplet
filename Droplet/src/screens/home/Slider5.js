@@ -64,7 +64,7 @@ export default class Slider5 extends Component {
               <Slider
                 style={{ width: 300 }}
                 step={1}
-                minimumValue={1}
+                minimumValue={0}
                 maximumValue={5}
                 onValueChange={val => this.setState({ distance: val })}
                 value={this.state.distance}
@@ -85,7 +85,7 @@ export default class Slider5 extends Component {
                 />
               </View>
               <View style={styles.textCon}>
-                <Text>Least Happy  </Text>
+                <Text>Not Happy  </Text>
 
                 <Text>Very Happy   </Text>
               </View>
