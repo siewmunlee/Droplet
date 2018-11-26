@@ -14,18 +14,6 @@ const useracc = {
 class Chat extends Component {
   state = {
     messages: [],
-    startAudio: false,
-    hasPermission: false,
-    playAudio: false,
-    audioSettings: {
-      SampleRate: 22050,
-      Channels: 1,
-      AudioQuality: "Low",
-      AudioEncoding: "aac",
-      MeteringEnabled: true,
-      IncludeBase64: true,
-      AudioEncodingBitRate: 32000
-    }
   };
 
   get user() {
@@ -57,27 +45,6 @@ class Chat extends Component {
           messages={this.state.messages}
           onSend={Fire.shared.send}
           user={this.user}
-          renderActions={() => {
-            return (
-              <Ionicons
-                name="ios-mic"
-                size={35}
-                hitSlop={{ top: 20, bottom: 20, left: 50, right: 50 }}
-                color={this.state.startAudio ? "red" : "black"}
-                style={{
-                  bottom: 50,
-                  right: Dimensions.get("window").width / 2,
-                  position: "absolute",
-                  shadowColor: "#000",
-                  shadowOffset: { width: 0, height: 0 },
-                  shadowOpacity: 0.5,
-                  zIndex: 2,
-                  backgroundColor: "transparent"
-                }}
-                onPress={this.handleAudio}
-              />
-            );
-          }}
         />
       </Container>
     );
@@ -93,16 +60,6 @@ class Chat extends Component {
   componentWillUnmount() {
     Fire.shared.off();
   }
-
-  handleAudio = async () => {
-    if (!this.state.startAudio) {
-      this.setState({
-        startAudio: true
-      });
-    } else {
-      this.setState({ startAudio: false });
-    }
-  };
 }
 
 export default Chat;

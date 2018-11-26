@@ -34,10 +34,15 @@ export default class Profile extends Component {
               <View style={styles.headerContent}>
                 <Image style={styles.avatar}
                   source={{ uri: 'https://bootdey.com/img/Content/avatar/avatar1.png' }} />
-
                 <Text style={styles.name}>
                   John Doe
-                           </Text>
+                </Text>
+                <Text style={styles.age}>
+                  Age: 21
+                  </Text>
+                  <Text style={styles.age}>
+                    Male
+                  </Text>
               </View>
             </View>
             <Button full warning onPress={() => this.props.navigation.navigate('Inbox')}>
@@ -151,6 +156,10 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: "#FFFFFF",
     fontWeight: '600',
+  },
+  age: {
+    fontSize: 15,
+    color: "#FFFFFF",
   },
   bodyContent: {
 

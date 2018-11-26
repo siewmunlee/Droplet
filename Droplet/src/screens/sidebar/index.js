@@ -8,17 +8,17 @@ import styles from "./style";
 // Remember to change the icons
 const datas = [
   {
-    name: "Home",
-    route: "Home",
-    icon: "ios-home",
-    bg: "#C5F442"
-  },
-  {
     name: "Profile",
     route: "Profile",
     icon: "ios-person",
     bg: "#C5F442"
   },
+  {
+    name: "Mood Tracker",
+    route: "Home",
+    icon: "ios-pulse",
+    bg: "#C5F442"
+  },  
   {
     name: "Chat Inbox",
     route: "Inbox",

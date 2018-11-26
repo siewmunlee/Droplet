@@ -1,12 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, Dimensions } from "react";
 import { TouchableHighlight, StyleSheet, View, TouchableOpacity, Image, Alert, ScrollView, FlatList, Slider } from 'react-native';
 import { Button, Container, H3, Text, Title, Header, Icon, Left, Body, Right, Content } from "native-base";
 import { DrawerActions } from 'react-navigation-drawer';
 import Ionicons from "react-native-vector-icons/Ionicons";
+import styles from "./styles";
 
 const splashscreen = require("../../../assets/arrow.png");
 const sad = require("../../../assets/1.png");
 const happy = require("../../../assets/2.png");
+const moodCover = require("../../../assets/mood.png");
 const datas =
   {
     route: "Slider1",
@@ -38,7 +40,7 @@ export default class Home extends Component {
   }
   render() {
     return (
-      <Container>
+      <Container style={styles.containerBackground}>
         <Header>
           <Left>
             <Button
@@ -52,15 +54,15 @@ export default class Home extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>Home</Title>
+            <Title>Mood Tracker</Title>
           </Body>
           <Right />
         </Header>
-        <Text style={{ textAlign: 'center', fontSize: 30, marginBottom: 20, fontWeight: 'bold', marginTop: 0, color: 'red', }}>Record Your Mood</Text>
+        <Image source={moodCover} style={styles.moodCover} />
         <ScrollView style={styles.scrollContainer}>
           <View style={styles.container}>
             <View style={styles.box} hide={this.state.isHidden}>
-              <Text style={{ textAlign: 'center', fontSize: 15, marginBottom: 20, fontWeight: 'bold', marginTop: 0, color: 'blue', }}>Where do you stand between the following two categories? </Text>
+              <Text style={styles.bottomText}>Where do you stand between the following two categories? </Text>
               <Slider
                 style={{ width: 300 }}
                 step={1}
@@ -69,33 +71,49 @@ export default class Home extends Component {
                 onValueChange={val => this.setState({ distance: val })}
                 value={this.state.distance}
                 thumbTintColor='rgb(252, 228, 149)'
-
               />
               <View style={styles.textCon}>
-                <Image
-                  source={happy}
-                  style={{ width: 60, height: 60 }}
+                <Ionicons
+                  name="ios-happy"
+                  size={35}
+                  color="green"
+                  style={{
+                    marginLeft: -10,
+                    marginTop: -10
+                  }}
                 />
-                <Text >
-            {this.state.distance }
-            </Text>
-                <Image
-                  source={sad}
-                  style={{ width: 50, height: 50 }}
+                <Text style={styles.value}>
+                  {this.state.distance}
+                </Text>
+                <Ionicons
+                  name="ios-sad"
+                  size={35}
+                  color="red"
+                  style={{
+                    marginRight: -10,
+                    marginTop: -10
+                  }}
                 />
               </View>
 
               <View style={styles.textCon}>
-                <Text>Not Angry   </Text>
-
-                <Text>Very Angry   </Text>
+                <Text style={styles.leftMarker}>Not Angry</Text>
+                <Text style={styles.rightMarker}>Very Angry</Text>
               </View>
 
-              <View style={styles.buttonContainer}>
-
-                <TouchableHighlight style={[styles.button]} onPress={() => this.props.navigation.navigate('Slider1')}>
-                  <Image style={styles.icon} source={{ uri: 'https://img.icons8.com/flat_round/50/000000/right.png' }} />
-                </TouchableHighlight>
+              <View style={{flexDirection: 'row'}}>
+                <Button style={styles.nextButton} iconRight info onPress={() => this.props.navigation.navigate('Slider1')}>
+                  <Text>Next</Text>
+                  <Ionicons
+                  name="ios-arrow-forward"
+                  size={15}
+                  color="white"
+                  style={{
+                    marginLeft: -10,
+                    paddingRight: 15
+                  }}
+                />
+                </Button>
               </View>
             </View>
           </View>
@@ -105,64 +123,3 @@ export default class Home extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  scrollContainer: {
-    flex: 1,
-  },
-  container: {
-    padding: 20,
-  },
-  textCon: {
-    marginTop: 10,
-    width: 280,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-
-  box: {
-    marginTop: 10,
-    height: 300,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    shadowColor: 'black',
-    shadowOpacity: .2,
-    shadowOffset: {
-      height: 1,
-      width: -2
-    },
-    elevation: 2,
-    paddingTop: 10
-  },
-  profileImage: {
-    width: 300,
-    height: 300,
-    marginBottom: 20,
-  },
-  name: {
-    fontSize: 35,
-    marginBottom: 20,
-    fontWeight: 'bold',
-    color: '#1E90FF',
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    marginTop: 20,
-  },
-
-  button: {
-    width: 90,
-    height: 90,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 20,
-
-    margin: 10,
-    elevation: 4,
-  },
-
-  icon: {
-    width: 35,
-    height: 35,
-  }
-});
