@@ -60,7 +60,7 @@ export default class Slider5 extends Component {
         <ScrollView style={styles.scrollContainer}>
           <View style={styles.container}>
             <View style={styles.box} hide={this.state.isHidden}>
-              <Text style={{ textAlign: 'center', fontSize: 15, marginBottom: 20, fontWeight: 'bold', marginTop: 0, color: 'blue', }}>Where do you stand in terms of general well-being? </Text>
+              <Text style={{ textAlign: 'center', fontSize: 15, marginBottom: 20, fontWeight: 'bold', marginTop: 0, color: 'blue', }}>Where do you stand between the following two categories? </Text>
               <Slider
                 style={{ width: 300 }}
                 step={1}
