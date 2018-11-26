@@ -19,7 +19,7 @@ export default class Slider2 extends Component {
     super(props);
     this.state = {
       age: 45, age1: 45, age2: 45, age3: 45, age4: 45, age5: 45, isHidden: false,
-      distance: 30,
+      distance: 3,
       minDistance: 10,
       maxDistance: 100
     }
@@ -64,29 +64,37 @@ export default class Slider2 extends Component {
               <Slider
                 style={{ width: 300 }}
                 step={1}
-                minimumValue={18}
-                maximumValue={71}
-                // thumbImage={true}
+                minimumValue={1}
+                maximumValue={5}
+                onValueChange={val => this.setState({ distance: val })}
+                value={this.state.distance}
                 thumbTintColor='rgb(252, 228, 149)'
+
               />
               <View style={styles.textCon}>
-                <Image
-                  source={sad}
-                  style={{ width: 50, height: 50 }}
-                />
-
                 <Image
                   source={happy}
                   style={{ width: 60, height: 60 }}
                 />
+                <Text >
+            {this.state.distance }
+            </Text>
+                <Image
+                  source={sad}
+                  style={{ width: 50, height: 50 }}
+                />
               </View>
 
               <View style={styles.textCon}>
-                <Text>Presssured</Text>
-                <Text>Calm</Text>
+                <Text>Least Tired </Text>
+
+                <Text>Very Tired </Text>
               </View>
 
               <View style={styles.buttonContainer}>
+                <TouchableHighlight style={[styles.button]} onPress={() => this.props.navigation.goBack()}>
+                  <Image style={styles.icon} source={{ uri: 'https://img.icons8.com/flat_round/50/000000/left.png' }} />
+                </TouchableHighlight>
                 <TouchableHighlight style={[styles.button]} onPress={() => this.props.navigation.navigate('Slider3')}>
                   <Image style={styles.icon} source={{ uri: 'https://img.icons8.com/flat_round/50/000000/right.png' }} />
                 </TouchableHighlight>

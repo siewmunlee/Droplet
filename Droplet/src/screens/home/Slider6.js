@@ -14,7 +14,7 @@ const datas =
   }
   ;
 
-export default class Slider1 extends Component {
+export default class Slider6 extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,29 +73,29 @@ export default class Slider1 extends Component {
               />
               <View style={styles.textCon}>
                 <Image
-                  source={happy}
-                  style={{ width: 60, height: 60 }}
+                  source={sad}
+                  style={{ width: 50, height: 50 }}
                 />
                 <Text >
             {this.state.distance }
             </Text>
                 <Image
-                  source={sad}
-                  style={{ width: 50, height: 50 }}
+                  source={happy}
+                  style={{ width: 60, height: 60 }}
                 />
               </View>
 
               <View style={styles.textCon}>
-                <Text>Least Sad</Text>
+                <Text>Least Alert  </Text>
 
-                <Text>Very Sad</Text>
+                <Text>Very Alert   </Text>
               </View>
 
               <View style={styles.buttonContainer}>
                 <TouchableHighlight style={[styles.button]} onPress={() => this.props.navigation.goBack()}>
                   <Image style={styles.icon} source={{ uri: 'https://img.icons8.com/flat_round/50/000000/left.png' }} />
                 </TouchableHighlight>
-                <TouchableHighlight style={[styles.button]} onPress={() => this.props.navigation.navigate('Slider2')}>
+                <TouchableHighlight style={[styles.button]} onPress={() => this.props.navigation.navigate('Slider7')}>
                   <Image style={styles.icon} source={{ uri: 'https://img.icons8.com/flat_round/50/000000/right.png' }} />
                 </TouchableHighlight>
               </View>

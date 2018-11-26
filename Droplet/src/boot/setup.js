@@ -22,7 +22,9 @@ import NewNote from "../screens/diary/addNote"
 import EditNote from "../screens/diary/editNote"
 import AudioNote from "../screens/diary/audioNote"
 import Slider5 from "../screens/home/Slider5"
-
+import Slider6 from "../screens/home/Slider6"
+import Slider7 from "../screens/home/Slider7"
+import EndSlider from "../screens/home/EndSlider"
 import SideBar from "../screens/sidebar";
 
 import ApplicationStore from '../reducers'
@@ -82,6 +84,9 @@ const MainNavigator = createStackNavigator({
   Slider3: {screen: Slider3},
   Slider4: {screen: Slider4},
   Slider5: {screen: Slider5},
+  Slider6: {screen: Slider6},
+  Slider7: {screen: Slider7},
+  EndSlider: {screen: EndSlider},
 },
   {
     initialRouteName: "Drawer",

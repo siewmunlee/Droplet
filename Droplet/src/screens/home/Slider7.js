@@ -14,7 +14,7 @@ const datas =
   }
   ;
 
-export default class Slider1 extends Component {
+export default class Slider6 extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -60,7 +60,7 @@ export default class Slider1 extends Component {
         <ScrollView style={styles.scrollContainer}>
           <View style={styles.container}>
             <View style={styles.box} hide={this.state.isHidden}>
-              <Text style={{ textAlign: 'center', fontSize: 15, marginBottom: 20, fontWeight: 'bold', marginTop: 0, color: 'blue', }}>Where do you stand between the following two categories? </Text>
+              <Text style={{ textAlign: 'center', fontSize: 15, marginBottom: 20, fontWeight: 'bold', marginTop: 0, color: 'blue', }}>Where do you stand in terms of general well-being? </Text>
               <Slider
                 style={{ width: 300 }}
                 step={1}
@@ -73,29 +73,25 @@ export default class Slider1 extends Component {
               />
               <View style={styles.textCon}>
                 <Image
-                  source={happy}
-                  style={{ width: 60, height: 60 }}
+                  source={sad}
+                  style={{ width: 50, height: 50 }}
                 />
                 <Text >
             {this.state.distance }
             </Text>
                 <Image
-                  source={sad}
-                  style={{ width: 50, height: 50 }}
+                  source={happy}
+                  style={{ width: 60, height: 60 }}
                 />
               </View>
 
-              <View style={styles.textCon}>
-                <Text>Least Sad</Text>
-
-                <Text>Very Sad</Text>
-              </View>
+          
 
               <View style={styles.buttonContainer}>
                 <TouchableHighlight style={[styles.button]} onPress={() => this.props.navigation.goBack()}>
                   <Image style={styles.icon} source={{ uri: 'https://img.icons8.com/flat_round/50/000000/left.png' }} />
                 </TouchableHighlight>
-                <TouchableHighlight style={[styles.button]} onPress={() => this.props.navigation.navigate('Slider2')}>
+                <TouchableHighlight style={[styles.button]} onPress={() => this.props.navigation.navigate('EndSlider')}>
                   <Image style={styles.icon} source={{ uri: 'https://img.icons8.com/flat_round/50/000000/right.png' }} />
                 </TouchableHighlight>
               </View>
