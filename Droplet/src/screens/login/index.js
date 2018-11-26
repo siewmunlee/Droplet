@@ -64,8 +64,8 @@ const styles = StyleSheet.create({
     },
     logo: {
         position: "absolute",
-        left: Platform.OS === "android" ? 40 : 50,
-        top: Platform.OS === "android" ? 35 : 20,
+        left: 50,
+        top: 20,
         width: 280,
         height: 300
       },

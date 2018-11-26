@@ -10,7 +10,7 @@ const datas = [
     {
         img: counsellor,
         route: "Chat",
-        text: "Counsellor"
+        text: "Bob"
     }
 ];
 
